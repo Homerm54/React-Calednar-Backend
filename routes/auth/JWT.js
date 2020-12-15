@@ -27,7 +27,9 @@ const JWTRecreate = async (req, res) => {
   res.json({
     ok: true,
     token,
-  })
+    name,
+    uid
+  });
 }
 
 
