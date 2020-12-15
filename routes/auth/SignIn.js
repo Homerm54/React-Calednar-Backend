@@ -38,7 +38,7 @@ const SignIn = async (req, res) => {
 
     res.status(201).json({
       ok: true, token,
-      uid: user.id. name: user.name,
+      uid: user.id, name: user.name,
     });
 
 
