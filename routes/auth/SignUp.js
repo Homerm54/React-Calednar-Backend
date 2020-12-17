@@ -2,7 +2,7 @@ const { body } = require('express-validator');
 const checkForErrors = require('../../middlewares/CheckForErrors');
 const jwtGenerator = require('../../utils/jwtGenerator');
 const User = require('../../database/models/User');
-
+const bcryptjs = require('bcryptjs');
 
 
 
@@ -21,6 +21,9 @@ const SignUp = async (req, res) => {
     // the fields needed, ignoring the ones we send but don't need
     const user = new User(req.body);
 
+    
+    const salt = bcryptjs.genSaltSync();
+    user.password = bcryptjs.hashSync(req.body.password, salt);
 
     await user.save();
 
